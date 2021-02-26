@@ -1,0 +1,40 @@
+<p>bloglist works!</p>
+<button (click)="addNewBlog()">Add New</button><br><br>
+<div *ngIf="!addnew && !editblog">
+    <table *ngIf="bloglist && bloglist.length > 0">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>CreatedDate</th>
+            <th>Actions</th>
+        </tr>
+        <!-- {{bloglist | json}} -->
+        <tr *ngFor="let d of bloglist">
+            <td>{{d.Title}}</td>
+            <td>{{d.Description}}</td>
+            <td>{{d.Status}}</td>
+            <td>{{d.CreatedDate | date: 'short'}}</td>
+            <td>
+                <button (click)="editBlog(d.id)">Edit</button><br>
+                <button (click)="deleteBlog(d.id)">Delete</button><br>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div *ngIf="addnew || editblog">
+    <form>
+        <label for="title">Title</label>
+        <input id="title" type="text" name="title" [(ngModel)]="blog.Title"><br><br>
+        <label for="description">Description</label>
+        <input id="description" type="text" name="description" [(ngModel)]="blog.Description"><br><br>
+        <label for="date">Date</label>
+        <input id="date" type="text" name="date" [(ngModel)]="blog.Date"><br><br>
+        <label for="status">Status</label>
+        <input id="status" type="text" name="status" [(ngModel)]="blog.Status"><br><br>
+        <button *ngIf="addnew" (click)="addBlog()">Save</button><br><br>
+        <button *ngIf="editblog" (click)="updateBlog()">Update</button><br><br>
+        <button (click)="clearBlog()">Clear</button>
+    </form>
+</div>

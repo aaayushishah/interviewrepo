@@ -1,0 +1,9 @@
+<p>Login</p>
+
+<label for="email">Email</label>
+<input id="email" type="text" name="email" [(ngModel)]="userdetails.email"><br><br>
+<label for="password">Password</label>
+<input id="password" type="password" name="password" [(ngModel)]="userdetails.password"><br><br>
+<button (click)="logmein()">Submit</button><br><br>
+<button (click)="clearmeup()">Clear</button><br><br>
+<button [routerLink]="['/signup']">Signup</button>
